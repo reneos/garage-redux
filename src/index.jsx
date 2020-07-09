@@ -6,21 +6,38 @@ import reduxPromise from 'redux-promise';
 import logger from 'redux-logger';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { createHistory as history } from 'history';
+import { reducer as formReducer } from 'redux-form';
 
 import '../assets/stylesheets/application.scss';
 
+import CarsIndex from './containers/cars_index';
+
+// Reducers
+const identityReducer = (state = null, action) => state;
+
+// Initial state
+const initialState = {
+  // garageName: prompt("Enter your garage's name"),
+  garageName: "nicoles-cool-garage",
+  cars: [],
+  form: formReducer
+};
+
 const reducers = combineReducers({
   // key: reducer
+  garageName: identityReducer,
+  cars: identityReducer,
 });
 
 const middlewares = applyMiddleware(reduxPromise, logger);
 
 // render an instance of the component in the DOM
 ReactDOM.render(
-  <Provider store={createStore(reducers, {}, middlewares)}>
+  <Provider store={createStore(reducers, initialState, middlewares)}>
     <Router history={history}>
       <Switch>
-        TODO
+        <Route path="/" exact component={CarsIndex} />
+        <Route path="/cars/new" exact component={CarsNew} />
       </Switch>
     </Router>
   </Provider>,
