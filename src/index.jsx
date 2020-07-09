@@ -11,22 +11,24 @@ import { reducer as formReducer } from 'redux-form';
 import '../assets/stylesheets/application.scss';
 
 import CarsIndex from './containers/cars_index';
+import CarsNew from './containers/cars_new';
 
 // Reducers
+import carsReducer from './reducers/cars_reducer';
 const identityReducer = (state = null, action) => state;
 
 // Initial state
 const initialState = {
   // garageName: prompt("Enter your garage's name"),
   garageName: "nicoles-cool-garage",
-  cars: [],
-  form: formReducer
+  cars: []
 };
 
 const reducers = combineReducers({
   // key: reducer
   garageName: identityReducer,
-  cars: identityReducer,
+  cars: carsReducer,
+  form: formReducer
 });
 
 const middlewares = applyMiddleware(reduxPromise, logger);

@@ -8,6 +8,19 @@ export function fetchCars(garageName) {
   };
 }
 
-export function createCar() {
-
+export function createCar(body, garageName, callback) {
+  const url = `https://wagon-garage-api.herokuapp.com/${garageName}/cars`;
+  const request = fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify(body)
+  }).then(r => r.json())
+    // .then(callback);
+    .then(data => console.log(data));
+  return {
+    type: 'CAR_CREATED',
+    payload: request
+  };
 }

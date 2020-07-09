@@ -14,7 +14,7 @@ class CarsIndex extends Component {
   renderCars = () => {
     return this.props.cars.map((car) => {
       return (
-        <li className="car-list-item" key={car.plate}>
+        <li className="car-list-item" key={car.id}>
           <h3>{car.brand} - {car.model}</h3>
           <p><strong>Owner:</strong> {car.owner}</p>
         </li>
