@@ -15,6 +15,7 @@ import CarsNew from './containers/cars_new';
 
 // Reducers
 import carsReducer from './reducers/cars_reducer';
+
 const identityReducer = (state = null, action) => state;
 
 // Initial state

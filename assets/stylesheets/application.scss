@@ -1,11 +1,18 @@
+body {
+  background-color: #707070;
+}
+
 .app {
   margin-top: 20px;
   margin-bottom: 20px;
   display: flex;
+  background-color: white;
+  border-radius: 20px;
 }
 
 .sidebar {
   max-width: 200px;
+  margin: 20px;
 }
 
 .main-content {
