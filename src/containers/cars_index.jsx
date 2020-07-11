@@ -15,6 +15,7 @@ class CarsIndex extends Component {
     return this.props.cars.map((car) => {
       return (
         <li className="car-list-item" key={car.id}>
+          <Link to={`/cars/${car.id}`} className="car-list-item__link" />
           <h3>{car.brand} - {car.model}</h3>
           <p><strong>Owner:</strong> {car.owner}</p>
         </li>
