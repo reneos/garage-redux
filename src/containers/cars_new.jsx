@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import { createCar } from '../actions';
+import { Link } from 'react-router-dom';
+import Sidebar from './sidebar';
 
 class CarsNew extends Component {
   onSubmit = (values) => {
@@ -26,35 +28,42 @@ class CarsNew extends Component {
 
   render() {
     return (
-      <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-        <Field
-          label="Brand"
-          name="brand"
-          type="text"
-          component={this.renderField}
-        />
-        <Field
-          label="model"
-          name="model"
-          type="text"
-          component={this.renderField}
-        />
-        <Field
-          label="owner"
-          name="owner"
-          type="text"
-          component={this.renderField}
-        />
-        <Field
-          label="plate"
-          name="plate"
-          type="text"
-          component={this.renderField}
-        />
-        <button className="btn btn-primary" type="submit" disabled={this.props.pristine || this.props.submitting}>
-          Add Car
-        </button>
-      </form>
+      <div className="app">
+        <Sidebar>
+          <Link to="/" className="btn btn-primary">
+            Back to car list
+          </Link>
+        </Sidebar>
+        <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="main-content">
+          <Field
+            label="Brand"
+            name="brand"
+            type="text"
+            component={this.renderField}
+          />
+          <Field
+            label="model"
+            name="model"
+            type="text"
+            component={this.renderField}
+          />
+          <Field
+            label="owner"
+            name="owner"
+            type="text"
+            component={this.renderField}
+          />
+          <Field
+            label="plate"
+            name="plate"
+            type="text"
+            component={this.renderField}
+          />
+          <button className="btn btn-primary" type="submit" disabled={this.props.pristine || this.props.submitting}>
+            Add Car
+          </button>
+        </form>
+      </div>
     );
   }
 }

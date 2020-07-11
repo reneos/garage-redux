@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { fetchCars } from '../actions';
-
+import Sidebar from './sidebar';
 
 class CarsIndex extends Component {
   componentWillMount() {
@@ -25,12 +25,11 @@ class CarsIndex extends Component {
   render() {
     return (
       <div className="app">
-        <div className="sidebar">
-          <h1>{this.props.garageName}</h1>
-          <Link to="/cars/new">
+        <Sidebar>
+          <Link to="/cars/new" className="btn btn-primary">
             Add A Car
           </Link>
-        </div>
+        </Sidebar>
         <div className="main-content">
           <ul className="car-list">
             {this.renderCars()}
